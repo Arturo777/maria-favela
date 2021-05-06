@@ -1,6 +1,11 @@
 import React from 'react'
 
 export const Input = props => {
+  const {
+    margin,
+    width,
+    style
+  } = props;
   const styles = {
     color: '#8A0020',
     backgroundColor: '#ede6fc',
@@ -10,10 +15,11 @@ export const Input = props => {
     fontWeight: '600',
     lineHeight: '40px',
     padding: '0 10px',
-    width: '100%',
+    width: width ? width : '100%',
+    margin: margin && margin,
   }
   return (
-    <input {...props} style={styles} />
+    <input {...props} style={{...styles, ...style}} />
 
   )
 }

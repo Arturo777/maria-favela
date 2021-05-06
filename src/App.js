@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-// react router
+
+// REACT ROUTER
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,9 +8,8 @@ import {
 } from "react-router-dom";
 import NavBar from './components/NavBar';
 
-
+// VIEWS
 import Home from './components/Home/';
-
 import Terapiasyservicios  from './components/Terapiasyservicios/'
 import Saludcuantica  from './components/Terapiasyservicios/Saludcuantica/'
 import Metodoyuen  from './components/Terapiasyservicios/Metodoyuen/'
@@ -20,10 +20,12 @@ import Cursosmetodoyuen from './components/Cursos/Cursosmetodoyuen'
 import Cursosaccessconsciousness from './components/Cursos/Cursosaccessconsciousness'
 import Contacto from './components/Contacto/'
 import Preguntasfrecuentes  from './components/Preguntas'
-import CheckoutForm from './components/CheckoutForm'
+import StripeContainer from './components/CheckoutForm'
 import Footer from './components/Footer'
 import Error from './components/Error'
 import './App.css'
+
+
 
 const Privacidad = () => <h1>privacidad</h1>
 
@@ -37,7 +39,7 @@ const App = () => {
     // console.log('useEffect');
     window.addEventListener('resize', checkSize);
     return () => {
-      console.log('cleanup');
+      // console.log('cleanup');
       window.removeEventListener('resize', checkSize);
     };
   }, []);
@@ -53,7 +55,7 @@ const App = () => {
     },
     { 
       path:"/checkout-form",
-      component: CheckoutForm,
+      component: StripeContainer,
       exact: true,
     },
     { 
@@ -156,7 +158,7 @@ const App = () => {
               path = {x.path}
               exact={x.exact}
               key={i} 
-              render={ props => <x.component
+              render={ () => <x.component
                  size = {size} 
                  price= {x.price}
                  productname = {x.productname}

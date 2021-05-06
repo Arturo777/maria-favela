@@ -75,20 +75,24 @@ export const FlexContainer = props => {
   const {
     justifycontent,
     flexdirection,
+    margintop,
     alignitems,
     alignself,
+    width,
+
     
   } = props;
   const styles = {
-    border: '4px solid red',
+    // border: '4px solid red',
     display: 'flex',
-    // marginBottom: 5,
+    marginTop: margintop && margintop,
     // padding: '0px',
     justifyContent: justifycontent && justifycontent,
     // flexDirection: flexdirection ? ( Number(size) <= 1000 ? 'column' : flexdirection) : 'row',
     flexDirection: flexdirection ? flexdirection : (Number(size) <= 1000 && 'column') ,
     alignItems: alignitems && alignitems,
     alignSelf: alignself && alignself,
+    width: width && width,
   }
   return (
     <div style={styles} {...props}>

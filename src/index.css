@@ -38,11 +38,12 @@ textarea {
 }
 
 input::placeholder, textarea::placeholder  {
-  color: white;
+  color: #CA9BA5;
 }
 
-.Calendar {
-  width: 100% !important;
+.StripeElement, .__PrivateStripeElement {
+  display:flex;
+  width:100%;
 }
 
 
