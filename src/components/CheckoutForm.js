@@ -5,7 +5,6 @@ import { FormControl, FlexContainer, Containerpage } from './../components/conta
 import {Label} from './Label'
 import {Input} from './inputs'
 import Header1 from './Header1'
-
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
@@ -57,13 +56,42 @@ const CheckoutForm = () => {
     },
     hidePostalCode: true
   }
+  const handleSubmit = async (e) => {
+
+    e.preventDefault()
+
+    const billingDetails = {
+      name: e.target.Nombre.value,
+      email: e.target.Email.value,
+      line1: e.target.FechaHora.value,
+      address: {
+        city: e.target.Ciudad.value,
+        state: e.target.Estado.value,
+        postal_code: e.target.CP.value,
+      }
+    };
+
+    
+    const { data: clientSecret } = await axios.post(
+      "./../../api/payments.js", 
+    {
+      amount: price * 100
+    });
+    console.log(clientSecret);
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: elements.getElement(CardElement),
+      billing_details: billingDetails
+    });
+  };
   
   
   return (
     <Containerpage>
       {location.product ?
         <FlexContainer justifycontent='center'>
-          <form style={styles.form}>
+          <form style={styles.form} onSubmit={handleSubmit}>
             <h1>
               Checkout Form
             </h1>
@@ -71,6 +99,10 @@ const CheckoutForm = () => {
             <FormControl>
               <Label htmlFor='Nombre'>Nombre:</Label>
               <Input id='Nombre' name='Nombre' ></Input>
+            </FormControl>
+            <FormControl>
+              <Label htmlFor='Email'>Email:</Label>
+              <Input type='email' id='Email' name='Email' ></Input>
             </FormControl>
             <FormControl>
               <Label htmlFor='FechaHora'>Elige el día y la hora para tu cita:</Label>
