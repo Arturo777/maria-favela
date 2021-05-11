@@ -4,12 +4,11 @@ import { Containerpage, Containercard } from './../containers'
 import Header1 from './../Header1'
 import P from './../P'
 import { NavLink } from 'react-router-dom';
+import { SizeContext } from './../../App'
 
 
-const Cursosaccessconsciousness = props => {
-  const {
-    size
-  } = props;
+const Cursosaccessconsciousness = () => {
+  const size = React.useContext(SizeContext);
   const products = {
     barras: {
       price: 30,

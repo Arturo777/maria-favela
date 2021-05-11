@@ -1,22 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Li from './Li'
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
+import { SizeContext } from './../../App'
 const logo = `${process.env.PUBLIC_URL}/images/logoMariaFavela.png`
 
-const NavBar = props => {
-  
-  const {
-    size
-  } = props;
 
+const NavBar = () => {
+  const [isMenuVisible, setIsMenuVisible] = useState(false)
+  const [subMenuToShow, setSubMenuToShow] = useState('')
+  const size = useContext(SizeContext)
   
-  
-  
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-  
-  const [subMenuToShow, setSubMenuToShow] = useState('');
-
-
   const styles = {
     nav: {
       display: 'flex',

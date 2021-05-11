@@ -1,12 +1,13 @@
 import React from 'react'
+import { SizeContext } from './../App'
 
 
 
 const Titleback = props => {
+  const size = React.useContext(SizeContext);
   const {
     justifycontent,
     background,
-    size,
   } = props;
   const styles = {
     div: {

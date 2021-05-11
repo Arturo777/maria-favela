@@ -3,13 +3,12 @@ import { Containerpage, Containercard } from './../../containers'
 import Header1 from './../../Header1'
 import P from './../../P'
 import { NavLink } from 'react-router-dom'
+import { SizeContext } from './../../../App'
 
 
 
-const Accessconsciousness = props => {
-  const {
-    size
-  } = props;
+const Accessconsciousness = () => {
+  const size = React.useContext(SizeContext);
   const products = {
     barras: {
       price: 700,

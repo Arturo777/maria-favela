@@ -3,13 +3,14 @@ import { Containerpage } from './../../containers'
 import Header1 from './../../Header1'
 import P from './../../P'
 import { NavLink } from 'react-router-dom';
+import { SizeContext } from './../../../App'
 
 
 const Yuen = props => {
-  const {
-    size, price, productname
-  } = props;
-  
+  const size = React.useContext(SizeContext);
+  const { price, productname } = props;
+
+
   return (
     <Containerpage size={size}>
       <Header1>METODO YUEN</Header1>

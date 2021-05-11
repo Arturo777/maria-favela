@@ -3,11 +3,10 @@ import { Containerpage } from './../../containers'
 import Header1 from './../../Header1'
 import P from './../../P'
 import { NavLink } from 'react-router-dom'
+import { SizeContext } from './../../../App'
 
-const Constelacionesfamiliares = props => {
-  const {
-    size
-  } = props;
+const Constelacionesfamiliares = () => {
+  const size = React.useContext(SizeContext);
   const products = {
     constelaciones: {
       price: 800,

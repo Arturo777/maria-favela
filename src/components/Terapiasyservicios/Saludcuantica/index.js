@@ -2,13 +2,12 @@ import React from 'react'
 import { Containerpage } from './../../containers'
 import Header1 from './../../Header1'
 import P from './../../P'
-import Button from './../../Button'
 import { NavLink } from 'react-router-dom';
+import { SizeContext } from './../../../App'
+const Saludcuantica = () => {
 
-const Saludcuantica = props => {
-  const {
-    size
-  } = props;
+  const size = React.useContext(SizeContext);
+  
   const products = {
     saludcuantica: {
       price: 700,

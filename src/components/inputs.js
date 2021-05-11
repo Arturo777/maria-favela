@@ -1,6 +1,10 @@
 import React from 'react'
+import { SizeContext } from './../App'
 
 export const Input = props => {
+
+  const size = React.useContext(SizeContext);
+
   const {
     margin,
     width,
@@ -15,8 +19,8 @@ export const Input = props => {
     fontWeight: '600',
     lineHeight: '40px',
     padding: '0 10px',
-    width: width ? width : '100%',
-    margin: margin && margin,
+    width: width ? (Number(size) >= 1000 && width) : '100%',
+    margin: margin && (Number(size) >= 1000 && margin),
   }
   return (
     <input {...props} style={{...styles, ...style}} />

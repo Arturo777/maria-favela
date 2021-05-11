@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { SizeContext } from './../../App'
 
 const Li = props => {
+  const size = React.useContext(SizeContext);
   const {
     functions,
     submenu,
@@ -8,18 +10,6 @@ const Li = props => {
     children,
   } = props;
   const { alignitems, position } = props
-  const [size, setSize] = useState(window.innerWidth);
-  const checkSize = () => {
-    setSize(window.innerWidth);
-  };
-  useEffect(() => {
-    // console.log('useEffect');
-    window.addEventListener('resize', checkSize);
-    return () => {
-      console.log('cleanup');
-      window.removeEventListener('resize', checkSize);
-    };
-  }, []);
   const [liStyle, setLiStyle] = useState({
     color: '#292929',
     borderTop: '3px solid white',

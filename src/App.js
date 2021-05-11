@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, createContext} from 'react';
 
 // REACT ROUTER
 import {
@@ -25,28 +25,17 @@ import Footer from './components/Footer'
 import Error from './components/Error'
 import './App.css'
 
-
-
 const Privacidad = () => <h1>privacidad</h1>
+
+export const SizeContext = createContext();
 
 const App = () => {
   const [size, setSize] = useState(window.innerWidth);
-  // const [price, setPrice] = useState(110);
-  const checkSize = () => {
-    setSize(window.innerWidth);
-  };
   useEffect(() => {
-    // console.log('useEffect');
-    window.addEventListener('resize', checkSize);
-    return () => {
-      // console.log('cleanup');
-      window.removeEventListener('resize', checkSize);
-    };
+    window.addEventListener('resize', () => {
+      setSize(window.innerWidth);
+    })
   }, []);
-
-  
-  
-
   const routes = [
     { 
       path:"/",
@@ -138,8 +127,6 @@ const App = () => {
       exact: false,
     },
   ]
-
-
   const styles = {
     main: {
       flexGrow: '1',
@@ -149,30 +136,26 @@ const App = () => {
   }
   return (
     <Router>
-      
-      <NavBar size={size}/>
-      <main style={styles.main}> 
-        <Switch >
-          {routes.map((x, i) => (
-            <Route 
-              path = {x.path}
-              exact={x.exact}
-              key={i} 
-              render={ () => <x.component
-                 size = {size} 
-                 price= {x.price}
-                 productname = {x.productname}
-              /> }
-            />)
-          )
-        }
-        </Switch>
-      </main>
-
-      <Footer />
-
-
-      
+      <SizeContext.Provider value={size}>
+        <NavBar />
+        <main style={styles.main}> 
+          <Switch >
+            {routes.map((x, i) => (
+              <Route 
+                path = {x.path}
+                exact={x.exact}
+                key={i} 
+                render={ () => <x.component
+                  price= {x.price}
+                  productname = {x.productname}
+                /> }
+              />)
+            )
+          }
+          </Switch>
+        </main>
+        <Footer />
+      </SizeContext.Provider>
     </Router>
 );
 }

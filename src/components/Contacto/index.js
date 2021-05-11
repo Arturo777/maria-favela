@@ -2,13 +2,13 @@ import React from 'react'
 import Titleback from './../Titleback'
 import Header1 from './../Header1'
 import P from './../P'
+import { SizeContext } from './../../App'
+
 const background = `${process.env.PUBLIC_URL}/images/backEjem4.png`
 
-const Contacto = props => {
+const Contacto = () => {
 
-  const {
-    size
-  } = props;
+  const size = React.useContext(SizeContext);
   return (
     <React.Fragment>
       <Titleback background={background} justifycontent="flex-end" size={size}>

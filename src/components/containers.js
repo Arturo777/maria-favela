@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import { SizeContext } from './../App'
 
 
 
@@ -22,9 +23,9 @@ export const Containercard = props => {
 
 
 export const Containerpage = props => {
+  const size = React.useContext(SizeContext)
   const {
      children,
-     size,
     //  width,
   } = props;
   const styles = {
@@ -57,21 +58,7 @@ export const BasicContainer = props => {
 }
 
 export const FlexContainer = props => {
-
-  const [size, setSize] = useState(window.innerWidth);
-  const checkSize = () => {
-    setSize(window.innerWidth);
-  };
-  useEffect(() => {
-    // console.log('useEffect');
-    window.addEventListener('resize', checkSize);
-    return () => {
-      // console.log('cleanup');
-      window.removeEventListener('resize', checkSize);
-    };
-  }, []);
-
-
+  const size = React.useContext(SizeContext)
   const {
     justifycontent,
     flexdirection,
@@ -79,16 +66,11 @@ export const FlexContainer = props => {
     alignitems,
     alignself,
     width,
-
-    
   } = props;
   const styles = {
-    // border: '4px solid red',
     display: 'flex',
     marginTop: margintop && margintop,
-    // padding: '0px',
     justifyContent: justifycontent && justifycontent,
-    // flexDirection: flexdirection ? ( Number(size) <= 1000 ? 'column' : flexdirection) : 'row',
     flexDirection: flexdirection ? flexdirection : (Number(size) <= 1000 && 'column') ,
     alignItems: alignitems && alignitems,
     alignSelf: alignself && alignself,

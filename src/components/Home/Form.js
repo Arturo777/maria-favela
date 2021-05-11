@@ -16,7 +16,6 @@ const Form = props => {
     padding: '5px 20px',
     margin: '50px 50px',
   }
-
   const [contacto, setContacto] = React.useState({
     Nombre: "",
     FechaNacimiento: "",
@@ -100,7 +99,6 @@ const Form = props => {
   
   return (
     <form {...props} onSubmit={handleSubmit} style={styles}>
-
       <BasicContainer>
         <FlexContainer flexdirection="column" alignitems="center">
           <Header1 color="#8a80f9">
@@ -109,10 +107,8 @@ const Form = props => {
           <Subtitle color="#8a80f9">
             PROCESOS DE TRANSFORMACIÓN
           </Subtitle>
-
         </FlexContainer>
       </BasicContainer>
-
       <BasicContainer>
 
         <FlexContainer>
@@ -142,7 +138,6 @@ const Form = props => {
         </FlexContainer>
 
       </BasicContainer>
-
       <BasicContainer>
         <FlexContainer >
           <FormControl>
@@ -172,7 +167,6 @@ const Form = props => {
           </FormControl>
         </FlexContainer>
       </BasicContainer>
-
       <BasicContainer>
         <FlexContainer>
           <FormControl>
@@ -199,7 +193,6 @@ const Form = props => {
           </FormControl>
         </FlexContainer>
       </BasicContainer>
-
       <BasicContainer>
         <FlexContainer>
           <FormControl>
@@ -235,10 +228,8 @@ const Form = props => {
           <Button type="submit">Mandar Formulario</Button>
         </FlexContainer>
       </BasicContainer>
-
     </form>
   )
 }
-
 
 export default Form

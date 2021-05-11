@@ -2,16 +2,14 @@ import React from 'react'
 import Titleback from './../Titleback'
 import Header1 from './../Header1'
 import Subtitle from './../Subtitle'
+import { SizeContext } from './../../App'
 // import P from './../P'
-import Form from './Form'
 const background = `${process.env.PUBLIC_URL}/images/backEjem.png`
 
 
-const Home = props => {
+const Home = () => {
   
-  const {
-    size
-  } = props;
+  const size = React.useContext(SizeContext);
 
   return (
     <React.Fragment>
@@ -26,7 +24,7 @@ const Home = props => {
         </Subtitle>
       </Titleback>
       
-      <Form size={size}/>
+      
 
     </React.Fragment>
   )

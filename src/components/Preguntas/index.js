@@ -5,12 +5,11 @@ import Subtitle from './../Subtitle'
 import { Label } from './../Label'
 import { Containerpage, Containercard } from './../containers'
 import P from './../P'
+import { SizeContext } from './../../App'
 const background = `${process.env.PUBLIC_URL}/images/backEjem5.png`
 
-const Preguntas = props => {
-  const {
-    size
-  } = props;
+const Preguntas = () => {
+  const size = React.useContext(SizeContext);
   return (
     <React.Fragment>
 
