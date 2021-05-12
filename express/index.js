@@ -1,3 +1,4 @@
+// ACTUALIZAR ESTE ARCHIVO MANUALMENTE 
 const express = require("express")
 const path = require('path')
 const stripe = require("stripe")('sk_test_51ImV0KC0XCYz6y0geFWbxrAYFgctaXTlxjBuxNjTUAGZhSO10YBoq7jcnqpq2y5iLc2G5cEg3bmr1JnGfmm1nILC00tUgyIAYg')
@@ -12,7 +13,7 @@ app.get('/', (req, res) => {
   res.sendFile('index.html', { root: path.join(__dirname, '../public_html') });
 });
 
-app.get('/api', function (req, res) {
+app.get('/api', (req, res) => {
   res.send('Hello Worldo!');
 });
 
@@ -40,6 +41,10 @@ app.post("/api/payment", async (req, res) => {
   }
 });
 
-app.listen(3001, () => {
-  console.log("Server on port", 3001);
+app.get('*', (req, res) => {
+  res.sendFile('index.html', { root: path.join(__dirname, '../public_html') });
+})
+
+app.listen(3000, () => {
+  console.log("Server on port", 3000);
 });
